@@ -13,5 +13,15 @@ module.exports = {
     if (!newDoc.type) {
       throw { forbidden: "Document must have a type" };
     }
+
+    const ALLOWED_TYPES = ["node", "relation"];
+
+    if (ALLOWED_TYPES.indexOf(newDoc.type) == -1) {
+      throw {
+        forbidden: `Unknown type "${
+          newDoc.type
+        }", must be one of ${ALLOWED_TYPES.join(", ")}`,
+      };
+    }
   },
 };
