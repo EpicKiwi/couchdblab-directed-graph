@@ -1,0 +1,26 @@
+{
+  "name": "couchdblab-directed-graph",
+  "version": "1.0.0",
+  "description": "CouchDB Experiment with directed graph data",
+  "main": "flush-data.js",
+  "scripts": {
+    "start": "node flush-data.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EpicKiwi/couchdblab-directed-graph.git"
+  },
+  "keywords": [
+    "couchdb"
+  ],
+  "author": "EpicKiwi <me@epickiwi.fr>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EpicKiwi/couchdblab-directed-graph/issues"
+  },
+  "homepage": "https://github.com/EpicKiwi/couchdblab-directed-graph#readme",
+  "dependencies": {
+    "pouchdb": "^7.2.2"
+  }
+}
