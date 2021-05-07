@@ -15,9 +15,9 @@ async function flushData() {
 
   let docs = sourceFiles.map((el) => getDoc(el));
 
-  for (let doc of docs) {
-    console.info(doc._id);
+  let skippedDocs = [];
 
+  for (let doc of docs) {
     let currentDoc = null;
 
     try {
@@ -29,18 +29,29 @@ async function flushData() {
     }
 
     if (!currentDoc) {
+      console.info(doc._id);
+
       delete doc._rev;
       await db.put(doc);
+
       console.log(`> Created`);
+      console.info("");
     } else if (currentDoc && doc._rev) {
+      console.info(doc._id);
+
       doc._rev = currentDoc._rev;
       await db.put(doc);
-      console.log(`> Updated`);
-    } else {
-      console.log(`> Skipped`);
-    }
 
-    console.info("");
+      console.log(`> Updated`);
+      console.info("");
+    } else {
+      skippedDocs.push(doc._id);
+      //console.log(`> Skipped`);
+    }
+  }
+
+  if (skippedDocs.length > 0) {
+    console.log(`Skipped ${skippedDocs.length} docs`);
   }
 }
 
