@@ -25,3 +25,7 @@ And flush documents using the provided script
 ```
 npm run start
 ```
+
+## Dataset
+
+Included dataset is a Game of Thrones graph using data from [the API of Ice And Fire](https://anapioficeandfire.com/).
