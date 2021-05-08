@@ -20,10 +20,22 @@ npm install
 
 Copy `settings.example.js` to `settings.js` and fill it with your server configuration
 
-And flush documents using the provided script
+Get Ice And Fire dataset using `get-data` script
+
+```
+npm run get-data
+```
+
+Add documents to your database using the provided script
 
 ```
 npm run flush
+```
+
+Run the explorer using static web server
+
+```
+npm run explorer
 ```
 
 ## Dataset

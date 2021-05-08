@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "explorer": "http-server .",
+    "get-data": "node get-got-data.js",
     "flush": "node flush-data.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
