@@ -108,3 +108,6 @@ settings.js
 
 #cache files
 *-cache.json
+
+# data files
+content/got
