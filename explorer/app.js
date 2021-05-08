@@ -26,6 +26,11 @@ async function init() {
     );
     el.addEventListener("click", () => initExploration(nodeDoc._id));
   });
+
+  if (document.location.hash) {
+    let nodeId = document.location.hash.replace("#", "");
+    initExploration(nodeId);
+  }
 }
 
 function renderCompactNode(name, fromColorType) {
@@ -41,6 +46,7 @@ function renderCompactNode(name, fromColorType) {
 async function initExploration(nodeId) {
   exploreAreaEl.innerHTML = "";
   exploreAreaEl.appendChild(await renderNodeCard(nodeId));
+  setUrl(nodeId);
 }
 
 async function renderNodeCard(nodeId) {
@@ -62,13 +68,25 @@ async function renderNodeCard(nodeId) {
   let metaEl = content.querySelector(".metadata");
 
   Object.entries(nodeDoc).forEach(([key, value]) => {
+    if (typeof value == "object" && !Array.isArray(value)) {
+      return;
+    }
+
     let keyEl = document.createElement("dt");
     keyEl.textContent = key;
     metaEl.appendChild(keyEl);
 
-    let valueEl = document.createElement("dd");
-    valueEl.textContent = value;
-    metaEl.appendChild(valueEl);
+    if (Array.isArray(value)) {
+      value.forEach((valEl) => {
+        let valueEl = document.createElement("dd");
+        valueEl.textContent = valEl;
+        metaEl.appendChild(valueEl);
+      });
+    } else {
+      let valueEl = document.createElement("dd");
+      valueEl.textContent = value;
+      metaEl.appendChild(valueEl);
+    }
   });
 
   let relationEl = content.querySelector(".relations");
@@ -138,13 +156,16 @@ async function followRelation(relationId) {
   );
 
   let cardRect = appendCard.getBoundingClientRect();
-  console.log(cardRect);
   window.scrollTo({
     behavior: "smooth",
     top: window.scrollY + cardRect.top - 200,
   });
 
-  console.log("follow relation", relationId);
+  setUrl(relation.target);
+}
+
+function setUrl(nodeId) {
+  history.replaceState(null, null, `#${nodeId}`);
 }
 
 init();

@@ -144,6 +144,8 @@ body > * {
   align-items: stretch;
   justify-content: stretch;
   border-top: solid 1px #dedede;
+
+  overflow: auto;
 }
 
 .node-card .relations button {
@@ -172,6 +174,10 @@ body > * {
       rgba(var(--node-color), 0.3) 0%,
       rgba(var(--node-color), 0) 100%
     );
+}
+
+.node-card .relations .node-name {
+  flex: 1;
 }
 
 .node-card .relations button:disabled {
