@@ -138,9 +138,10 @@ async function followRelation(relationId) {
   );
 
   let cardRect = appendCard.getBoundingClientRect();
+  console.log(cardRect);
   window.scrollTo({
     behavior: "smooth",
-    top: cardRect.top - 200,
+    top: window.scrollY + cardRect.top - 200,
   });
 
   console.log("follow relation", relationId);

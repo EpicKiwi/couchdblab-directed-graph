@@ -105,3 +105,6 @@ dist
 
 # Settings file
 settings.js
+
+#cache files
+*-cache.json
