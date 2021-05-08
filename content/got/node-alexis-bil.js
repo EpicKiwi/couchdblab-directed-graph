@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   _id: "node-alexis-bil",
   type: "node",
   name: "Alexis Bil",

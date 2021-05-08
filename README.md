@@ -23,7 +23,7 @@ Copy `settings.example.js` to `settings.js` and fill it with your server configu
 And flush documents using the provided script
 
 ```
-npm run start
+npm run flush
 ```
 
 ## Dataset

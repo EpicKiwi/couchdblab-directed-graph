@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   _id: "node-adrein-k",
   type: "node",
   name: "Adrein K",

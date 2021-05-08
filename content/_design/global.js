@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   _id: "_design/global",
   _rev: "force",
   validate_doc_update: function (newDoc, oldDoc, userCtx, secObj) {

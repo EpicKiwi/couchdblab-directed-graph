@@ -1,7 +1,9 @@
-const PouchDB = require("pouchdb");
-const { promisify } = require("util");
-const glob = promisify(require("glob"));
-const settings = require("./settings.js");
+import PouchDB from "pouchdb";
+import { promisify } from "util";
+import cglob from "glob";
+const glob = promisify(cglob);
+
+import * as settings from "./settings.js";
 
 const db = new PouchDB(settings.DATABASE);
 
@@ -13,7 +15,7 @@ async function flushData() {
 
   let sourceFiles = await glob("./content/**/*.js");
 
-  let docs = sourceFiles.map((el) => getDoc(el));
+  let docs = await Promise.all(sourceFiles.map((el) => getDoc(el)));
 
   let skippedDocs = [];
 
@@ -55,8 +57,8 @@ async function flushData() {
   }
 }
 
-function getDoc(docJsFile) {
-  let doc = require(docJsFile);
+async function getDoc(docJsFile) {
+  let doc = (await import(docJsFile)).default;
 
   if (!doc._id) {
     throw new Error(`Document ${docJsFile} should have a field _id`);
