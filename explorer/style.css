@@ -1,0 +1,245 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  color: #2e2e2e;
+
+  padding-top: 25vh;
+  padding-bottom: 25vh;
+}
+
+body > * {
+  width: calc(100% - 20px);
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.startup-nav {
+  text-align: center;
+  width: 100%;
+  max-width: unset;
+}
+
+.startup-nav .instructions {
+  margin-bottom: 20px;
+  font-weight: normal;
+}
+
+.startup-nav .instructions small {
+  font-style: italic;
+}
+
+.startup-nav .random-nodes {
+  width: 100%;
+  overflow: auto;
+  white-space: nowrap;
+
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+}
+
+.node-name {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.compact-node {
+  border: solid rgba(var(--node-color), 0.8) 2px;
+
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  background: white
+    linear-gradient(
+      to bottom,
+      rgba(var(--node-color), 0.3) 0%,
+      rgba(var(--node-color), 0) 100%
+    );
+  padding: 10px;
+
+  margin-left: 5px;
+  margin-right: 5px;
+
+  cursor: pointer;
+
+  transition: ease 0.3s box-shadow;
+}
+
+.compact-node:active {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.explore-area {
+  margin-top: 25px;
+
+  max-width: 500px;
+}
+
+.node-card {
+  box-shadow: 0 10px 100px rgba(var(--node-color), 0.2),
+    0 5px 10px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+
+  overflow: hidden;
+
+  position: relative;
+  z-index: 1;
+}
+
+.node-card > header {
+  padding: 15px;
+  background: white
+    linear-gradient(
+      to bottom,
+      rgba(var(--node-color), 0.3) 0%,
+      rgba(var(--node-color), 0) 100%
+    );
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: stretch;
+}
+
+.node-card > header > h4 {
+  flex: 1;
+}
+
+.node-card > article {
+  padding: 15px;
+}
+
+.node-card .metadata {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  row-gap: 10px;
+}
+
+.node-card .metadata dt {
+  grid-column: 1;
+  font-weight: bold;
+  color: #575757;
+}
+
+.node-card .metadata dd {
+  grid-column: 2;
+}
+
+.node-type {
+  padding: 5px 10px;
+  border-radius: 25px;
+  font-size: 0.8em;
+  border: solid rgba(var(--node-color), 0.5) 1px;
+  text-transform: capitalize;
+  background: white;
+}
+
+.node-card .relations {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: stretch;
+  border-top: solid 1px #dedede;
+}
+
+.node-card .relations button {
+  padding: 5px 10px;
+  padding-top: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  flex: 1;
+  border: none;
+  border-right: solid 1px #dedede;
+
+  --button-background: white;
+
+  transition: ease 0.3s;
+  transition-property: background;
+
+  background: white
+    linear-gradient(
+      to top,
+      rgba(var(--node-color), 0.3) 0%,
+      rgba(var(--node-color), 0) 100%
+    );
+}
+
+.node-card .relations button:disabled {
+  opacity: 1;
+}
+
+.node-card .relations button:last-child {
+  border-right: none;
+}
+
+.node-card .relations button .relation-icon {
+  font-size: 1.5em;
+  margin-top: 5px;
+}
+
+.node-card .relations button:hover:not(:disabled) {
+  background: #f7f7f7
+    linear-gradient(
+      to top,
+      rgba(var(--node-color), 0.3) 0%,
+      rgba(var(--node-color), 0) 100%
+    );
+}
+
+.node-card .relations button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.node-card .relations button.selected:disabled {
+  opacity: 1;
+}
+
+.relation-name {
+  text-transform: capitalize;
+}
+
+.relation-icon,
+.icon {
+  width: 1em;
+  height: 1em;
+}
+
+@keyframes relation-appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.followed-relation {
+  animation: ease 1s relation-appear;
+
+  height: 100px;
+  background: url("./relation-background.svg");
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  color: rgba(0, 0, 0, 0.4);
+
+  position: relative;
+  z-index: 0;
+}

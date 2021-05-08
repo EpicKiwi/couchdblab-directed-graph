@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Graph explorer</title>
+    <meta charset="utf8" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="main-header"></header>
+    <nav class="startup-nav">
+      <div class="instructions">
+        <h2 class="startup-title">Let's get started</h2>
+        <p><small>Select a node below to start exploring...</small></p>
+      </div>
+      <div class="random-nodes" id="random-nodes-container"></div>
+    </nav>
+    <main class="explore-area" id="explore-area"></main>
+
+    <template id="compact-node-template">
+      <button class="compact-node" style="--node-color: white">
+        <span class="node-name"></span>
+      </button>
+    </template>
+
+    <template id="relation-node-template">
+      <button class="relation-node" style="--node-color: white">
+        <span class="relation-name"></span>
+        <span class="node-name"></span>
+        <img
+          class="relation-icon"
+          src="./chevron-down.svg"
+          aria-hidden="true"
+        />
+      </button>
+    </template>
+
+    <template id="followed-relation-template">
+      <div class="followed-relation">
+        <h4 class="relation-name"></h4>
+      </div>
+    </template>
+
+    <template id="node-card-template">
+      <section class="node-card" style="--node-color: white">
+        <header>
+          <h4><span class="node-name"></span></h4>
+          <div class="node-type"></div>
+        </header>
+        <article>
+          <dl class="metadata"></dl>
+        </article>
+        <nav class="relations"></nav>
+      </section>
+    </template>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
